@@ -35,18 +35,6 @@ botonCalcularEdad.addEventListener("click", function(){
     //transformar el INPUT en un campo FECHA
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 
 La etiqueta es un elemento típico de FORMULARIOS: .value
@@ -58,7 +46,5 @@ La etiqueta es un elemento contenedor genérico: .textContent
 P
 H1 H2 H3...
 LABEL
-
-
 
 */
