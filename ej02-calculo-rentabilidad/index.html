@@ -12,14 +12,30 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
-    
-    <button class="btn btn-secondary">Boton</button>
-    
-    Una cantidad de euros.
-    Un porcentaje de rentabilidad anual.
-    Un número de años de duración del depósito.
+     
+  <div class="container">
+  
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Cantidad de euros</span>
+      <input id="inpEurosIniciales" type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Rentabilidad anual</span>
+      <input id="inpRentabAnual" type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">Duración del depósito</span>
+      <input id="inpDuracion" type="number" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+    </div>
+  
+    <button id="btnCalcular" class="btn btn-info">Calcular</button>
 
+    <div class="input-group">
+      <span class="input-group-text">Resultados</span>
+      <textarea id="taResultados" disabled style="height:auto" class="form-control" aria-label="With textarea"></textarea>
+    </div>
     La evolución del depósito inicial a lo largo de los años establecidos.
     La rentabilidad total al acabar la duración del depósito.
+  </div>
 </body>
 </html>
