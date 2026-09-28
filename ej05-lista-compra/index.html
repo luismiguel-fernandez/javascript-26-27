@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script defer type="text/javascript" src="bootstrap.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <h1>My first $1M app</h1>
+    <table id="tablaInput">
+        <tr>
+            <td><input type="text" id="txtAdd" value="" placeholder="Escribe algo aquí"></td>
+            <td><input type="button" id="btnAdd" value="Add to shopping list"></td>
+        </tr>
+    </table>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>My shopping list</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <ul id="mylist">
+                </ul>
+            </td>
+            <td>
+                <input type="button" id="btnSelAll" value="Select all"><br>
+                <input type="button" id="btnSelNot" value="Select nothing"><br>
+                <input type="button" id="btnInvSel" value="Invert selection"><br>
+                <input type="button" id="btnMovSel" value="Move selected to cart"><br>
+                <input type="button" id="btnDelSel" value="Delete selected">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <th>My cart</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <ul id="mycart">
+                </ul>
+            </td>
+            <td>
+                <input type="button" id="btnEmpCar" value="Empty cart"><br>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
