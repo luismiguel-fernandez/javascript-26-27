@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+input {
+    padding: 10px;
+    font-size: 16px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.message {
+    font-size: 18px;
+    margin-top: 20px;
+}
+#guess {
+    width: 200px;
+}
