@@ -1,32 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reto4</title>
-    <script defer src="script4.js"></script>
+    <script defer src="script.js"></script>
     <script defer type="text/javascript" src="bootstrap.js"></script>
-    <link rel="stylesheet" href="bootstrap.css">
-</head>
-<body>
+    <link rel="stylesheet" href="bootstrap.css" />
+  </head>
+  <body>
     <div class="container">
         <h1>Repaso. Reto 4. Blackjack</h1>
-        <button id="cartaBtn" class="btn btn-success">Empezar</button>
-        <button id="plantarseBtn" class="btn btn-warning">Plantarse</button>
-        <h3>Cartas del jugador</h3>
-        <img src="crupier.jpg" class="img-fluid" alt="">
-        <div class="card" style="width: 18rem;">
-            <ul id="manoUl" class="list-group list-group-flush">
-                
-            </ul>
-            <div id="marcadorDiv" class="card-footer">
-                0 puntos
+        <div class="row align-items-start">
+            <div class="col">
+                <img src="img/crupier.jpg" style="width: 100%" class="img-fluid" alt="" />
+                <div class="card" style="width: 18rem">
+                    <ul id="manoCrupierUl" class="list-group list-group-flush"></ul>
+                    <div id="marcadorCrupierDiv" class="card-footer">0 puntos</div>
+                </div>
+            </div>
+            <div class="col">
+                <img src="img/jugador.jpg" style="width: 300px" class="img-fluid" alt="" />
+                <button id="cartaBtn" class="btn btn-success">Empezar</button>
+                <button id="plantarseBtn" class="btn btn-warning">Plantarse</button>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Tu cuenta</span>
+                    <span class="input-group-text">€</span>
+                    <span id="cuenta" class="input-group-text">100,00</span>
+                    <span class="input-group-text">Tu apuesta</span>
+                    <span class="input-group-text">€</span>
+                    <input id="apuesta" type="number" value="5" min="1" max="100" class="form-control" aria-label="Dollar amount">
+                </div>
+                <!-- <h3>Cartas del jugador</h3> -->
+                <div class="card" style="width: 18rem">
+                    <ul id="manoUl" class="list-group list-group-flush"></ul>
+                    <div id="marcadorDiv" class="card-footer">0 puntos</div>
+                </div>
             </div>
         </div>
         <div class="form-floating mb-3">
-            <textarea id="resultadoTA" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2Disabled" style="height: 100px" disabled>Aquí aparecerán las puntuaciones y el ganador de la partida</textarea>
-            <label for="floatingTextarea2Disabled">Resultado de la partida</label>
+            <textarea id="resultadoTA" class="form-control" placeholder="Leave a comment here"
+                        style="height: 200px" disabled>
+                Aquí aparecerán las puntuaciones y el ganador de la partida
+            </textarea>
+            <label for="resultadoTA">Resultado de la partida</label>
         </div>
     </div>
-</body>
+  </body>
 </html>
