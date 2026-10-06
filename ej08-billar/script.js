@@ -16,10 +16,27 @@ const ballCounter = document.querySelector("#ballCounter")
 /*********************/
 /* código automático */
 /*********************/
+tableBoard.style.width = BOARD_WIDTH + "px"
+tableBoard.style.height = BOARD_HEIGHT + "px"
 
+const ball = document.createElement("DIV")
+tableBoard.append(ball)
+ball.classList.add("ball")
+
+let posX = 0
+let velX = 2
+ball.style.left = posX + "px"
+
+setInterval( moveBall, 10 )
 
 /************************/
 /* funciones auxiliares */
 /************************/
 
+function moveBall() {
+    posX += velX
+    ball.style.left = posX + "px"
 
+    if ( posX >= (BOARD_WIDTH - BALL_DIAMETER) )
+        velX = velX * (-1)
+}
