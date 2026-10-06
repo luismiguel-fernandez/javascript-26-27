@@ -2,9 +2,9 @@
 /* recuperar elementos del DOM */
 /*******************************/
 const tableBoard = document.querySelector("#tableBoard")
-const ANCHURA_TABLERO = 900
-const ALTURA_TABLERO = 450
-const DIAMETRO_BOLA = 30
+const BOARD_WIDTH = 900
+const BOARD_HEIGHT = 450
+const BALL_DIAMETER = 30
 
 const addBallBtn = document.querySelector("#addBallBtn")
 const add10BallsBtn = document.querySelector("#add10BallsBtn")
