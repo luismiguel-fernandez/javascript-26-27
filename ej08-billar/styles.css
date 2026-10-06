@@ -1,0 +1,15 @@
+#tableBoard {
+	width: 1px;
+	height: 1px;
+	background-color: lightgreen;
+	border-radius: 15px;
+	margin-top: 1em;
+	position: relative;
+}
+.ball {
+    width: 30px;
+    height: 30px;
+	background-color: black;
+	border-radius: 15px;
+	position: absolute;
+}
