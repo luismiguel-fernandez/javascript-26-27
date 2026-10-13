@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script defer type="text/javascript" src="bootstrap.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+<body>
+    <div class="container">
+    <h1>Students' choices</h1>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Your name</span>
+        <input id="studentName" type="text" class="form-control">
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">First choice</span>
+        <select id="choice1" class="form-select">
+            <option value="0">(choose one)</option>
+        </select>        
+    </div>
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Second choice</span>
+        <select id="choice2" class="form-select">
+            <option value="0">(choose one)</option>
+        </select>
+    </div>
+
+    <button id="insertButton" class="btn btn-primary">Insert</button>
+
+    <label id="errorMsg"></label>
+    
+    <table id="studentsChoices" class="table">
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Choice 1</th>
+                <th>Choice 2</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    </div>  
+</body>
+</html>
