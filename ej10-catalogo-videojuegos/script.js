@@ -4,7 +4,13 @@ const year = document.querySelector("#year")
 const platform = document.querySelector("#platform")
 const sendBtn = document.querySelector("#sendBtn")
 const videogamesList = document.querySelector("#videogamesList")
+const pattern = document.querySelector("#pattern")
 
+const titleTH = videogamesList.querySelector("th")
+const yearTH = videogamesList.querySelector("th:nth-child(2)")
+const platformTH = videogamesList.querySelector("th:nth-child(3)")
+
+/*
 let db
 //si hay una instancia del array DB en localStorage entonces se inicializa con eso
 if (localStorage.getItem("vgList")) {
@@ -14,8 +20,28 @@ if (localStorage.getItem("vgList")) {
 else {
     db = []
 }
+*/ 
+// el bloque anterior equivale a esta línea de abajo
+let db = JSON.parse( localStorage.getItem("vgList") || "[]" )
 
-dbToTable(db)
+let order = false   // false: a..z  0..9
+                    // true: z..a   9..0
+
+//reordenamos nuestra BD para que al inicio se muestre siempre por título A..Z
+db.sort( (v1,v2) => v1.title.localeCompare(v2.title) )
+
+dbToTable( db )
+
+pattern.addEventListener("input", function(){
+    //filtrar nuestro array local "db"
+    let filtered = db.filter( v =>
+        v.title.toLowerCase().includes( pattern.value.trim().toLowerCase() ) 
+        || v.year.toLowerCase().includes( pattern.value.trim().toLowerCase() )
+        || v.platform.toLowerCase().includes( pattern.value.trim().toLowerCase() )
+    )
+    //mostrar en el html el resultado del filtrado
+    dbToTable(filtered)
+})
 
 sendBtn.addEventListener("click", function(){
     let todoOK = true
@@ -65,7 +91,7 @@ sendBtn.addEventListener("click", function(){
         //insertar en el array y redibujar la tabla html
         db.push({
             title: game.value.trim(),
-            year: yearValue,
+            year: year.value.trim(),
             platform: platform[platform.selectedIndex].textContent
         })
         //guardamos en LocalStorage un objeto vgList que contiene nuestra "db"
@@ -74,6 +100,17 @@ sendBtn.addEventListener("click", function(){
         dbToTable(db)
         clearForm()
     }
+})
+
+titleTH.addEventListener("click", function() {
+    order = !order //el primer clic lo pasa de false a true (a..z -> z..a)
+    
+    if (order)
+        db.sort( (v1,v2) => v2.title.localeCompare(v1.title) )
+    else
+        db.sort( (v1,v2) => v1.title.localeCompare(v2.title) )
+
+    dbToTable(db)
 })
 
 /* ******************* FUNCIONES AUXILIARES ******************* */
