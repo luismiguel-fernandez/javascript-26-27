@@ -23,6 +23,8 @@ else {
 */ 
 // el bloque anterior equivale a esta línea de abajo
 let db = JSON.parse( localStorage.getItem("vgList") || "[]" )
+let filtered = db
+let favs = JSON.parse( localStorage.getItem("favsList") || "[]" )
 
 let order = false   // false: a..z  0..9
                     // true: z..a   9..0
@@ -34,7 +36,7 @@ dbToTable( db )
 
 pattern.addEventListener("input", function(){
     //filtrar nuestro array local "db"
-    let filtered = db.filter( v =>
+    filtered = db.filter( v =>
         v.title.toLowerCase().includes( pattern.value.trim().toLowerCase() ) 
         || v.year.toLowerCase().includes( pattern.value.trim().toLowerCase() )
         || v.platform.toLowerCase().includes( pattern.value.trim().toLowerCase() )
@@ -104,13 +106,27 @@ sendBtn.addEventListener("click", function(){
 
 titleTH.addEventListener("click", function() {
     order = !order //el primer clic lo pasa de false a true (a..z -> z..a)
-    
     if (order)
-        db.sort( (v1,v2) => v2.title.localeCompare(v1.title) )
+        filtered.sort( (v1,v2) => v2.title.localeCompare(v1.title) )
     else
-        db.sort( (v1,v2) => v1.title.localeCompare(v2.title) )
-
-    dbToTable(db)
+        filtered.sort( (v1,v2) => v1.title.localeCompare(v2.title) )
+    dbToTable(filtered)
+})
+yearTH.addEventListener("click", function() {
+    order = !order //el primer clic lo pasa de false a true (a..z -> z..a)
+    if (order)
+        filtered.sort( (v1,v2) => v2.year.localeCompare(v1.year) )
+    else
+        filtered.sort( (v1,v2) => v1.year.localeCompare(v2.year) )
+    dbToTable(filtered)
+})
+platformTH.addEventListener("click", function() {
+    order = !order //el primer clic lo pasa de false a true (a..z -> z..a)
+    if (order)
+        filtered.sort( (v1,v2) => v2.platform.localeCompare(v1.platform) )
+    else
+        filtered.sort( (v1,v2) => v1.platform.localeCompare(v2.platform) )
+    dbToTable(filtered)
 })
 
 /* ******************* FUNCIONES AUXILIARES ******************* */
@@ -139,6 +155,48 @@ function dbToTable(aDb) {
         newCell1.textContent = e.title
         newCell2.textContent = e.year
         newCell3.textContent = e.platform
+
+        const newButton = document.createElement("BUTTON")
+        newButton.classList.add("btn", "btn-outline-danger", "btn-sm")
+        
+        let index = favs.findIndex( v => v.title == e.title && v.year == e.year && e.platform == v.platform )
+        if (index >= 0) {
+            newButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                </svg>
+            `     
+        } else {
+            newButton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                </svg>
+            `
+        }
+        newCell4.append(newButton)
+
+        newButton.addEventListener("click", function(){
+            //buscar si este juego está en el array favoritos
+            let index = favs.findIndex( v => v.title == e.title && v.year == e.year && e.platform == v.platform )
+            if (index >= 0) {
+                //ese juego sí está en favoritos, quitarlo y vaciar el corazón
+                favs.splice(index,1)
+                newButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15"/>
+                    </svg>
+                `
+            } else {
+                //si no está en favoritos, añadirlo y rellenar corazón
+                favs.push(e)
+                newButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                    </svg>
+                `
+            }
+            localStorage.setItem("favsList", JSON.stringify(favs) )
+        })
     })
 
 }
