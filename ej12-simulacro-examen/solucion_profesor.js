@@ -138,9 +138,9 @@ function activateButton(button) {
 }
 
 function listSongList(songList) {
-    tareaList.innerHTML = ""
+    divSongList.innerHTML = ""
     songList.forEach( (s,index) => {
-        tareaList.innerHTML += `${index+1}. <b>${s.artist}</b> - <i>${s.title}</i> (${secondsToMinutes(s.duration)})<br>`
+        divSongList.innerHTML += `${index+1}. <b>${s.artist}</b> - <i>${s.title}</i> (${secondsToMinutes(s.duration)})<br>`
     });
 }
 
