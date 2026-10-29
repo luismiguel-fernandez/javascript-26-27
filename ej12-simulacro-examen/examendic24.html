@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulacro de examen</title>
+    <script defer src="solucion.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+</head>
+<body>
+<div class="container"><div class="row">
+    <div class="col-6">
+        <h3>Insert songs</h3>
+        <div class="input-group">
+            <input id="inpList" type="number" placeholder="List number" class="form-control" aria-describedby="feedback1" disabled value="1">
+            <input id="inpArt" type="text" placeholder="Artist name" class="form-control" aria-describedby="feedback1">
+            <input id="inpTit" type="text" placeholder="Song title" class="form-control" aria-describedby="feedback1">
+            <input id="inpLen" type="number" placeholder="Song length" class="form-control" aria-describedby="feedback1">
+            <button id="btnAddSong" class="btn btn-primary" type="button">Add song</button>
+            <div id="feedback1" class="invalid-feedback"></div>
+        </div>
+    
+        <h3>Filter songs</h3>
+        <div class="input-group">
+            <span class="input-group-text">Full list or filter</span>
+            <input id="inpSearch" type="text" placeholder="Pattern to filter by or empty for full list" class="form-control">
+            <button id="btnSearch" class="btn btn-success" type="button">Filter songs</button>
+        </div>
+
+        <h3>Order by</h3>
+        <div class="row">
+            <div class="d-grid col-3">
+                <button id="btnSortArtist" class="btn btn-secondary" type="button">Artist</button>
+            </div>
+            <div class="d-grid col-3">
+                <button id="btnSortTitle" class="btn btn-outline-secondary" type="button">Title</button>   
+            </div>
+            <div class="d-grid col-3">
+                <button id="btnSortLenInc" class="btn btn-outline-secondary" type="button">Length -+</button>
+            </div>
+            <div class="d-grid col-3">
+                <button id="btnSortLenDec" class="btn btn-outline-secondary" type="button">Length +-</button>
+            </div>
+            
+        <h3>Delete song</h3>
+        <div class="input-group">
+            <span class="input-group-text">Index</span>
+            <input id="inpDelete" type="text" placeholder="Index of the song to be deleted" class="form-control" aria-describedby="feedback2">
+            <button id="btnDelete" class="btn btn-danger" type="button">Delete song</button>
+            <div id="feedback2" class="invalid-feedback"></div>
+        </div>
+
+        <h3>Edit song</h3>    
+        <div class="input-group">
+            <span class="input-group-text">Index</span>
+            <input id="inpEdit" type="text" placeholder="Index of the song to be edited" class="form-control" aria-describedby="feedback3">
+            <button id="btnEdit" class="btn btn-warning" type="button">Edit song</button>
+            <div id="feedback3" class="invalid-feedback"></div>
+        </div>    
+
+        <h3>Play song</h3>
+        <div class="input-group">
+            <span class="input-group-text">Index</span>
+            <input id="inpPlay" type="text" placeholder="Index of the song to be played" class="form-control" aria-describedby="feedback4">
+            <input id="inpTimer" type="text" placeholder="Time left" class="form-control" disabled>
+            <button id="btnPlay" class="btn btn-info" type="button">Play song</button>
+            <div id="feedback4" class="invalid-feedback"></div>
+        </div>
+
+    </div>
+    </div>
+    <div class="col-6">
+        <h3>List</h3>
+        <div class="form-floating mb-3">
+            <div id="divSongList" class="form-control" style="height: 440px; background-color: lightgrey;"></div>
+            <label for="floatingTextarea2Disabled">Songs</label>
+        </div>
+    </div>
+</div></div>
+</body>
+</html>
+
+<!-- Enunciado
+parte obligatoria.
+•	(1p) Al insertar canción, sólo admite:
+    o	Título: al menos una letra (may/min/tildes) o número.
+    o	Artista: ídem.
+    o	Duración: entero positivo.
+•	(1p) Se muestra listado completo de canciones y se puede filtrar por patrón.
+•	(1p) Orden por artista (A-Z), por título (A-Z) y por duración (de menor a mayor y de mayor a menor).
+•	(1p) Eliminación de 1 canción indicando el nº de canción en la lista.
+•	(1p) Se inserta un número de segundos, pero la duración luego se muestra en formato mm:ss más legible.
+•	(1p) La lista de canciones no se pierde al recargar porque se guarda en Local Storage.
+
+parte opcional.
+•	(1p) Al insertar canción:
+    o	Informar al usuario si escribe datos no permitidos.
+•	(1p) Al ordenar, el botón que establece el orden actual queda resaltado en gris, frente al resto que está en blanco.
+•	(1p) Permite también modificar el título, el artista o la duración de una canción ya insertada.
+•	(0,5p) La conversión de segundos en minutos se realiza con la función “map”.
+•	(0,5p). Al listar, se muestra la longitud y la duración total de la lista de canciones y en formato mm:ss.
+•	(1p) Simula la reproducción de una canción. Al iniciar la reproducción, se muestra un contador en formato mm:ss que va decrementándose cada segundo desde la duración de la canción hasta 0.
+
+-->
