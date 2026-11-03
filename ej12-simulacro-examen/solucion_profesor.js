@@ -23,11 +23,11 @@ const feedback3 = document.querySelector("#feedback3")
 const divSongList = document.querySelector("#divSongList")
 
 let songList = [
-    // {artist: "Radiohead", title: "Creep", duration: "234"},
-    // {artist: "Radiohead", title: "High and dry", duration: "189"},
-    // {artist: "Kings of Leon", title: "Supersoaker", duration: "175"},
-    // {artist: "Kings of Leon", title: "Pyro", duration: "251"},
-    // {artist: "Editors", title: "Munich", duration: "210"}
+    {artist: "Radiohead", title: "Creep", duration: "234"},
+    {artist: "Radiohead", title: "High and dry", duration: "189"},
+    {artist: "Kings of Leon", title: "Supersoaker", duration: "175"},
+    {artist: "Kings of Leon", title: "Pyro", duration: "251"},
+    {artist: "Editors", title: "Munich", duration: "210"}
 ]
 listSongList(songList)
 inpDelete.value = ""
@@ -71,7 +71,7 @@ btnAddSong.addEventListener("click",function(){
     }
 })
 
-inpSearch.addEventListener("keyup",function(ev){
+inpSearch.addEventListener("input",function(ev){
     let pattern = inpSearch.value.trim()
     listSongList(songList.filter( s => s.artist.toLowerCase().includes(pattern) || s.title.toLowerCase().includes(pattern) ))
 })
