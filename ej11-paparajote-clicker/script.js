@@ -5,47 +5,66 @@ const Interfaz = {
     divTienda: document.querySelector("#divTienda")
 }
 
-const Partida = {
-    numPpj: 0,
-    numPpjPs: 0,
-    numPpjPc: 1,
-    numCursores: 0,
-    numAbuelas: 0,
-    numFabricas: 0
-}
+const Partida = JSON.parse(
+    localStorage.getItem("Partida")
+    ||
+    `{
+        "numPpj": 100,
+        "numPpjPs": 0,
+        "numPpjPc": 1,
+        "numCursores": 0,
+        "numAbuelas": 0,
+        "numFabricas": 0
+    }`
+)
+refrescarMarcador()
 
-const Mejoras = [
+const Mejoras = JSON.parse(
+    localStorage.getItem("Mejoras")
+    || 
+    `
+    [
     {
-        nombre: "Cursores",
-        precioInicial: 15,
-        unidadesCompradas: 0,
-        precioActual: 15,
-        incPps: 0.1,
-        icono: "img/cursor.webp"
+        "nombre": "Cursores",
+        "precioInicial": 15,
+        "unidadesCompradas": 0,
+        "precioActual": 15,
+        "incPps": 0.1,
+        "icono": "img/cursor.webp"
     },
     {
-        nombre: "Abuelas",
-        precioInicial: 100,
-        unidadesCompradas: 0,
-        precioActual: 100,
-        incPps: 1,
-        icono: "img/abuela.webp"
+        "nombre": "Abuelas",
+        "precioInicial": 100,
+        "unidadesCompradas": 0,
+        "precioActual": 100,
+        "incPps": 1,
+        "icono": "img/abuela.webp"
     },
     {
-        nombre: "Granjas",
-        precioInicial: 1100,
-        unidadesCompradas: 0,
-        precioActual: 1100,
-        incPps: 8,
-        icono: "img/granja.webp"
+        "nombre": "Granjas",
+        "precioInicial": 1100,
+        "unidadesCompradas": 0,
+        "precioActual": 1100,
+        "incPps": 8,
+        "icono": "img/granja.webp"
     }
-]
+    ]
+    `
+)
+dibujarMejoras()
 
 const INC_PRECIO = 1.15 //15% de subida de precio cada vez que compramos algo
 
-dibujarMejoras()
-
 Interfaz.btnPpj.addEventListener("click", clickPaparajote )
+
+//Activamos un "reloj" para que cada segundo se sumen los paparajotes pasivos
+let segundero = setInterval(function(){
+        Partida.numPpj += Partida.numPpjPs
+        refrescarMarcador()
+        localStorage.setItem( "Partida" , JSON.stringify(Partida) )
+        localStorage.setItem( "Mejoras", JSON.stringify(Mejoras) )
+        document.title = Partida.numPpj.toFixed(0) + " paparajotes"
+    } ,1000)
 
 function clickPaparajote() {
     Partida.numPpj += Partida.numPpjPc
