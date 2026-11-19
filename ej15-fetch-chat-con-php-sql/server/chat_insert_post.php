@@ -9,7 +9,7 @@ if(isset($_POST['nick'])&&isset($_POST['mensaje'])) {
 		$sen = $con->prepare($consulta);
         $sen->bindParam(1,$_POST['nick']);
         $sen->bindParam(2,$_POST['mensaje']);
-		$sen->execute();	
+		$sen->execute();
 } else {
 	echo "No has pasado los parámetros correctos. Debes pasar 'nick' y 'mensaje'";
 }
