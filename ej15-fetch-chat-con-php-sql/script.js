@@ -30,11 +30,30 @@ let consultador = setInterval( consultarNuevosMensajes , 1000 )
 let ultimoID = 0
 
 function consultarNuevosMensajes(){
-    fetch("server/chat_get_json.php?ultimo=" + ultimoID)
+    fetch("server/chat_select_get_json.php?ultimo=" + ultimoID)
     .then( respuesta => respuesta.json() )
     .then( mensajes => {
-        mensajes.foreach( m => {
-            
+        mensajes.forEach( m => {
+            chat.innerHTML += `<div class="mensaje">
+                                  <b>${m.nick} dijo:</b>
+                                  <br>
+                                  <span>${m.texto}</span>
+                               </div>`
+            ultimoID = m.id
+            chat.scrollTop = chat.scrollHeight
         })
     })
 }
+
+/*
+
+[
+    {"id":1,"nick":"luismi","texto":"hola","fecha":"2026-11-19 10:43:33"},
+    {"id":2,"nick":"fernando","texto":"que tal","fecha":"2026-11-19 10:46:33"},
+    {"id":3,"nick":"Luismi","texto":"muy bien","fecha":"2026-11-19 12:02:21"},
+    {"id":4,"nick":"Hola","texto":"Hoal","fecha":"2026-11-19 12:04:01"},
+    {"id":5,"nick":"David","texto":"Soy el macmaster","fecha":"2026-11-19 12:15:01"},
+    {"id":6,"nick":"luisim","texto":"asdsdgf","fecha":"2026-11-23 12:33:36"}
+]
+
+*/
