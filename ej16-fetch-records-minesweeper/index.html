@@ -10,9 +10,23 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body>
-    <div id="chat"></div>
-    <input type="text" id="nick" placeholder="Your nickname">
-    <input type="text" id="teclado" size="130" placeholder="Write a message">
-    <input type="button" id="enviar" value="Enviar">
+    <input type="text" id="nick" placeholder="Tu apodo">
+    <label>Elige dificultad del tablero</label>
+    <select id="level">
+        <option value="1">Chupao</option>
+        <option value="2">Venga, vaaamos</option>
+        <option value="3">Jodido</option>
+    </select>
+    <button class="btn btn-warning" id="play">JUGAR</button>
+    <table class="table" id="records">
+        <thead>
+            <th>Apodo</th>
+            <th>Dificultad</th>
+            <th>Tiempo de juego</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
 </body>
 </html>

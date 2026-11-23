@@ -6,7 +6,7 @@ if(isset($_GET['level'])) {
         var $duration;
     }
     function queryRecords($level,$conexion) {
-        $consulta = "SELECT * FROM game_times WHERE level = ".$level ;
+        $consulta = "SELECT * FROM game_times WHERE level = ".$level." ORDER BY duration";
         $sen = $conexion->prepare($consulta);
         $sen->execute();
         $result = [];
